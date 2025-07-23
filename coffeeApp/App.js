@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { useEffect, useState } from "react";
@@ -13,10 +13,12 @@ const Stack = createNativeStackNavigator();
 const HAS_LAUNCHED = "HAS_LAUNCHED";
 
 export default function App() {
-  const [hasLaunched, setHasLaunched] = useState();
+  const [hasLaunched, setHasLaunched] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
+      setIsLoading(true);
       const hasLaunched = await getItemFor(HAS_LAUNCHED);
 
       if (hasLaunched) {
@@ -30,20 +32,24 @@ export default function App() {
     getData().catch((error) => {
       console.log(error);
     });
+    setIsLoading(false);
   }, []);
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {hasLaunched ? (
-          <Stack.Screen name="HomeScreen" component={HomeScreen} />
-        ) : (
-          <Stack.Screen name="GettingStarted" component={GettingStarted} />
-        )}
+    <>
+      <NavigationContainer>
+        {isLoading && <ActivityIndicator size="large" color="red" />}
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          {hasLaunched ? (
+            <Stack.Screen name="HomeScreen" component={HomeScreen} />
+          ) : (
+            <Stack.Screen name="GettingStarted" component={GettingStarted} />
+          )}
 
-        <Stack.Screen name="Login" component={Login} />
-      </Stack.Navigator>
-    </NavigationContainer>
+          <Stack.Screen name="Login" component={Login} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
 
