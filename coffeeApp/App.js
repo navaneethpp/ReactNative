@@ -25,7 +25,6 @@ export default function App() {
         setHasLaunched(true);
       } else {
         await storeData(HAS_LAUNCHED, "true");
-        console.log("stored");
       }
     };
 

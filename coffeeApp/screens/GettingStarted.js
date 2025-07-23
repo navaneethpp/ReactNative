@@ -23,7 +23,11 @@ function GettingStarted({ navigation }) {
           The best grain, the finest roast, the powerful flavour.
         </Text>
 
-        <PrimaryButton navigation={() => navigation.navigate("Login")}>
+        <PrimaryButton
+          navigation={() =>
+            navigation.reset({ index: 0, routes: [{ name: "Login" }] })
+          }
+        >
           Get Started
         </PrimaryButton>
       </ImageBackground>
