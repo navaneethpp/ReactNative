@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import GettingStarted from "./screens/GettingStarted";
 import Login from "./screens/Login";
 import HomeScreen from "./screens/HomeScreen";
+import SignUp from "./screens/SignUp";
 import { getItemFor, storeData } from "./util/StorageHelper";
 
 const Stack = createNativeStackNavigator();
@@ -40,12 +41,12 @@ export default function App() {
         {isLoading && <ActivityIndicator size="large" color="red" />}
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           {hasLaunched ? (
-            <Stack.Screen name="HomeScreen" component={HomeScreen} />
+            <Stack.Screen name="Login" component={Login} />
           ) : (
             <Stack.Screen name="GettingStarted" component={GettingStarted} />
           )}
-
-          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="HomeScreen" component={HomeScreen} />
+          <Stack.Screen name="SignUp" component={SignUp} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
