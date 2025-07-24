@@ -1,4 +1,5 @@
 import {
+  Alert,
   Dimensions,
   Keyboard,
   Pressable,
@@ -9,12 +10,40 @@ import {
 } from "react-native";
 import InputBox from "../components/UI/InputBox";
 import Colors from "../constants/GlobalColors";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../components/Login/Button";
 
 function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [emailValidation, setEmailValidation] = useState(true);
+
+  useEffect(() => {
+    // Email validation
+    let isEmailValid = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/.test(
+      email
+    );
+
+    if (email.length < 3) {
+      isEmailValid = true;
+    }
+
+    setEmailValidation(email == "" ? true : isEmailValid);
+  }, [email]);
+
+  const loginHandler = () => {
+    if (email.length === 0 && password.length === 0) {
+      Alert.alert("Login Failed", "You need to fill email and password field");
+    } else if (email.length === 0 && password.length > 0) {
+      Alert.alert("Login Failed", "You need to fill the email field.");
+    } else if (email.length > 0 && password.length === 0) {
+      Alert.alert("Login Failed", "You ned to fill the password field.");
+    } else if (!emailValidation) {
+      Alert.alert("Login Failed", "You need to enter valid email id.");
+    } else if (emailValidation && password.length > 0) {
+      navigation.navigate("HomeScreen");
+    }
+  };
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -29,6 +58,9 @@ function Login({ navigation }) {
             isPassword={false}
             value={email}
             onChangeText={setEmail}
+            validationMessage="Enter a valid email"
+            validation={emailValidation}
+            autoCapitalize="none"
           >
             Email
           </InputBox>
@@ -37,16 +69,15 @@ function Login({ navigation }) {
             isPassword={true}
             value={password}
             onChangeText={setPassword}
+            autoCapitalize="none"
           >
             Password
           </InputBox>
-          <Button>Login</Button>
+          <Button navigation={loginHandler}>Login</Button>
 
           <Pressable
             style={styles.signUp}
-            onPress={() =>
-              navigation.reset({ index: 0, routes: [{ name: "SignUp" }] })
-            }
+            onPress={() => navigation.navigate("SignUp")}
           >
             <Text style={styles.signUpText}>
               Don't have account? <Text style={{ color: "blue" }}>Sign Up</Text>
@@ -75,7 +106,7 @@ const styles = StyleSheet.create({
   titleContainer: {
     justifyContent: "center",
     alignItems: "center",
-    height: screenHeight / 4,
+    height: screenHeight / 5,
   },
   title: {
     color: "white",

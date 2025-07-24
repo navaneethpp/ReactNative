@@ -17,9 +17,12 @@ function InputBox({
   isPassword = false,
   value,
   onChangeText,
+  validation = false,
+  validationMessage,
+  autoCapitalize = "none",
 }) {
   const [isFocused, setIsFocused] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(true);
   const inputRef = useRef(null);
 
   const handleContainerPress = () => {
@@ -34,27 +37,35 @@ function InputBox({
     <TouchableWithoutFeedback onPress={handleContainerPress}>
       <View style={styles.container}>
         <Text>{children}</Text>
-        <Pressable
-          style={[
-            styles.inputBox,
-            { borderColor: isFocused ? Colors.buttonBG : "#b6b5b5ff" },
-          ]}
-          onPress={() => setIsFocused(true)}
-        >
-          <TextInput
-            ref={inputRef}
-            style={styles.input}
-            keyboardType={keyboardType}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
-            secureTextEntry={isPassword}
-            value={value}
-            onChangeText={onChangeText}
-          />
-          <Pressable onPress={() => setShowPassword(!showPassword)}>
-            {isPassword && <Ionicons name={eyeIcon} size={24} color="black" />}
+        <View>
+          <Pressable
+            style={[
+              styles.inputBox,
+              { borderColor: isFocused ? Colors.buttonBG : "#b6b5b5ff" },
+            ]}
+            onPress={() => setIsFocused(true)}
+          >
+            <TextInput
+              ref={inputRef}
+              style={styles.input}
+              keyboardType={keyboardType}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+              secureTextEntry={isPassword && showPassword}
+              value={value}
+              onChangeText={onChangeText}
+              autoCapitalize={autoCapitalize}
+            />
+            <Pressable onPress={() => setShowPassword(!showPassword)}>
+              {isPassword && (
+                <Ionicons name={eyeIcon} size={24} color="black" />
+              )}
+            </Pressable>
           </Pressable>
-        </Pressable>
+          <View style={styles.validMessageContainer}>
+            {!validation && <Text>{validationMessage}</Text>}
+          </View>
+        </View>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -76,7 +87,6 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     paddingHorizontal: 8,
     flexDirection: "row",
-    // justifyContent: "space-between",
     alignItems: "center",
   },
   input: {
@@ -84,5 +94,8 @@ const styles = StyleSheet.create({
   },
   pressed: {
     opacity: 0.75,
+  },
+  validMessageContainer: {
+    height: 15,
   },
 });
