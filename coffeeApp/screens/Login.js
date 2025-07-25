@@ -65,7 +65,6 @@ function Login({ navigation }) {
             Email
           </InputBox>
           <InputBox
-            keyboardType="default"
             isPassword={true}
             value={password}
             onChangeText={setPassword}
@@ -76,7 +75,7 @@ function Login({ navigation }) {
           <Button navigation={loginHandler}>Login</Button>
 
           <Pressable
-            style={styles.signUp}
+            style={({ pressed }) => [styles.signUp, pressed && styles.pressed]}
             onPress={() => navigation.navigate("SignUp")}
           >
             <Text style={styles.signUpText}>
@@ -130,5 +129,8 @@ const styles = StyleSheet.create({
   },
   signUpText: {
     textDecorationLine: "underline",
+  },
+  pressed: {
+    opacity: 0.75,
   },
 });

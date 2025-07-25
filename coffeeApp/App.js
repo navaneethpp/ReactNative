@@ -25,27 +25,38 @@ export default function App() {
       if (hasLaunched) {
         setHasLaunched(true);
       } else {
-        await storeData(HAS_LAUNCHED, "true");
+        // await storeData(HAS_LAUNCHED, "true");
       }
+      setIsLoading(false);
     };
 
     getData().catch((error) => {
       console.log(error);
+      setIsLoading(false);
     });
-    setIsLoading(false);
   }, []);
+
+  if (isLoading) {
+    return (
+      <ActivityIndicator
+        size="large"
+        color="red"
+        style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+      />
+    );
+  }
 
   return (
     <>
       <NavigationContainer>
         {isLoading && <ActivityIndicator size="large" color="red" />}
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          {hasLaunched ? (
-            <Stack.Screen name="Login" component={Login} />
-          ) : (
-            <Stack.Screen name="GettingStarted" component={GettingStarted} />
-          )}
+        <Stack.Navigator
+          screenOptions={{ headerShown: false }}
+          initialRouteName={hasLaunched ? "HomeScreen" : "GettingStarted"}
+        >
           <Stack.Screen name="HomeScreen" component={HomeScreen} />
+          <Stack.Screen name="GettingStarted" component={GettingStarted} />
+          <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="SignUp" component={SignUp} />
         </Stack.Navigator>
       </NavigationContainer>

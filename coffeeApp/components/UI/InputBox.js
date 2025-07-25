@@ -20,6 +20,7 @@ function InputBox({
   validation = false,
   validationMessage,
   autoCapitalize = "none",
+  autoCorrect = false,
 }) {
   const [isFocused, setIsFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
@@ -55,6 +56,7 @@ function InputBox({
               value={value}
               onChangeText={onChangeText}
               autoCapitalize={autoCapitalize}
+              autoCorrect={autoCorrect}
             />
             <Pressable onPress={() => setShowPassword(!showPassword)}>
               {isPassword && (
@@ -63,7 +65,9 @@ function InputBox({
             </Pressable>
           </Pressable>
           <View style={styles.validMessageContainer}>
-            {!validation && <Text>{validationMessage}</Text>}
+            {!validation && (
+              <Text style={styles.validationMessage}>{validationMessage}</Text>
+            )}
           </View>
         </View>
       </View>
@@ -79,12 +83,12 @@ const styles = StyleSheet.create({
   container: {
     minWidth: 200,
     width: screenWidth * 0.8,
-    paddingVertical: 20,
+    paddingVertical: 4,
   },
   inputBox: {
     borderWidth: 1,
     borderRadius: 18,
-    marginVertical: 8,
+    marginVertical: 4,
     paddingHorizontal: 8,
     flexDirection: "row",
     alignItems: "center",
@@ -97,5 +101,8 @@ const styles = StyleSheet.create({
   },
   validMessageContainer: {
     height: 15,
+  },
+  validationMessage: {
+    color: "red",
   },
 });
