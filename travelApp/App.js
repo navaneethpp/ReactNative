@@ -1,8 +1,30 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+
+import HomeScreen from "./screens/HomeScreen";
+import PlaceSCreen from "./screens/PlaceScreen";
+import { useFonts } from "expo-font";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  return <Text>hello</Text>;
+  const [fontsLoaded, error] = useFonts({
+    primary: require("./assets/fonts/Sansation-Regular.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    <ActivityIndicator />;
+  }
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="PlaceScreen" component={PlaceSCreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
 
 const styles = StyleSheet.create({
