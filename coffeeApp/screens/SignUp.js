@@ -54,7 +54,7 @@ function SignUp({ navigation }) {
       storeData("email", email);
       storeData("name", name);
       storeData("HAS_LAUNCHED", "true");
-      navigation.navigate("HomeScreen");
+      navigation.navigate("HomeScreenContainer");
     }
   };
 

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import GettingStarted from "./screens/GettingStarted";
 import Login from "./screens/Login";
-import HomeScreen from "./screens/HomeScreen";
+import HomeScreenContainer from "./screens/HomeScreen/HomeScreenContainer";
 import SignUp from "./screens/SignUp";
 import { getItemFor, storeData } from "./util/StorageHelper";
 
@@ -52,9 +52,14 @@ export default function App() {
         {isLoading && <ActivityIndicator size="large" color="red" />}
         <Stack.Navigator
           screenOptions={{ headerShown: false }}
-          initialRouteName={hasLaunched ? "HomeScreen" : "GettingStarted"}
+          initialRouteName={
+            hasLaunched ? "HomeScreenContainer" : "GettingStarted"
+          }
         >
-          <Stack.Screen name="HomeScreen" component={HomeScreen} />
+          <Stack.Screen
+            name="HomeScreenContainer"
+            component={HomeScreenContainer}
+          />
           <Stack.Screen name="GettingStarted" component={GettingStarted} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="SignUp" component={SignUp} />

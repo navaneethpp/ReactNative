@@ -41,7 +41,7 @@ function Login({ navigation }) {
     } else if (!emailValidation) {
       Alert.alert("Login Failed", "You need to enter valid email id.");
     } else if (emailValidation && password.length > 0) {
-      navigation.navigate("HomeScreen");
+      navigation.navigate("HomeScreenContainer");
     }
   };
 
