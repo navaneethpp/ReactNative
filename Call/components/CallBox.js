@@ -1,4 +1,5 @@
 import {
+  Image,
   Linking,
   Platform,
   Pressable,
@@ -7,7 +8,7 @@ import {
   View,
 } from "react-native";
 
-function CallBox({ name, mobileNumber }) {
+function CallBox({ name, mobileNumber, id, navigation, image }) {
   function callHandler(phone) {
     let number = "";
 
@@ -21,7 +22,15 @@ function CallBox({ name, mobileNumber }) {
   }
 
   return (
-    <Pressable android_ripple={{ color: "#bfe0b6ff" }} style={styles.container}>
+    <Pressable
+      android_ripple={{ color: "#bfe0b6ff" }}
+      style={styles.container}
+      onPress={() => {
+        navigation.navigate("UserDetail", { id: id });
+      }}
+    >
+      <Image source={{ uri: image }} style={styles.image} />
+
       <View style={styles.subContainer}>
         <Text style={styles.text}>{name}</Text>
         <Text style={[styles.phoneNumber, styles.text]}>{mobileNumber}</Text>
@@ -50,9 +59,11 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 90,
     marginBottom: 8,
-    elevation: 5,
+    elevation: 4,
   },
   subContainer: {
+    flex: 2,
+    paddingHorizontal: 12,
     gap: 10,
   },
   text: {
@@ -74,5 +85,13 @@ const styles = StyleSheet.create({
   },
   pressed: {
     opacity: 0.7,
+  },
+  image: {
+    width: 65,
+    height: 65,
+    resizeMode: "cover",
+    borderRadius: 25,
+    borderWidth: 3,
+    borderColor: "black",
   },
 });
