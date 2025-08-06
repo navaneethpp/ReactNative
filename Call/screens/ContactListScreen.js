@@ -1,4 +1,6 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { Alert, Button, FlatList, StyleSheet, Text, View } from "react-native";
+import { useEffect } from "react";
+
 import CallBox from "../components/CallBox";
 import users from "../data/users";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -9,7 +11,8 @@ export default function ContactListScreen({ navigation }) {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <Text style={styles.text}>Total Contacts: {userData.length}</Text>
+        {/* <Text style={styles.text}>Total Contacts: {userData.length}</Text> */}
+
         <FlatList
           data={userData}
           keyExtractor={(item) => item.id.toString()}

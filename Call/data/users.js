@@ -299,6 +299,126 @@ const users = [
     image:
       "https://upload.wikimedia.org/wikipedia/commons/8/85/Selena_Gomez_-_Walmart_Soundcheck_Concert.jpg",
   },
+  {
+    id: 26,
+    name: "Tim Cook",
+    phone: "+1-4081234567",
+    email: "tim.cook@apple.com",
+    address: "Cupertino, California",
+    job: "CEO of Apple",
+    anniversary: "2011-08-24",
+    birthday: "1960-11-01",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/2/25/Tim_Cook_%282017%29_%28cropped%29.jpg",
+  },
+  {
+    id: 27,
+    name: "Priyanka Chopra",
+    phone: "+91-9810000001",
+    email: "priyanka@bollywood.com",
+    address: "Mumbai, India",
+    job: "Actress & Producer",
+    anniversary: "2018-12-01",
+    birthday: "1982-07-18",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f4/Priyanka_Chopra_at_The_Sky_Is_Pink_promotions_in_Mumbai.jpg",
+  },
+  {
+    id: 28,
+    name: "Leonardo DiCaprio",
+    phone: "+1-3106661234",
+    email: "leo@hollywood.com",
+    address: "Los Angeles, California",
+    job: "Actor & Environmentalist",
+    anniversary: "N/A",
+    birthday: "1974-11-11",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/7/77/Leonardo_DiCaprio_20140503.jpg",
+  },
+  {
+    id: 29,
+    name: "Angela Merkel",
+    phone: "+49-301234567",
+    email: "angela.merkel@germany.de",
+    address: "Berlin, Germany",
+    job: "Former Chancellor of Germany",
+    anniversary: "N/A",
+    birthday: "1954-07-17",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/b/bf/Angela_Merkel._Tallinn_Digital_Summit.jpg",
+  },
+  {
+    id: 30,
+    name: "Beyoncé Knowles",
+    phone: "+1-2126667890",
+    email: "beyonce@music.com",
+    address: "Houston, Texas",
+    job: "Singer & Entrepreneur",
+    anniversary: "2008-04-04",
+    birthday: "1981-09-04",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/9/98/Beyonc%C3%A9_Army.mil_cropped.jpg",
+  },
+  {
+    id: 31,
+    name: "Stephen Hawking",
+    phone: "+44-2034567890",
+    email: "hawking@cosmos.org",
+    address: "Cambridge, UK",
+    job: "Theoretical Physicist",
+    anniversary: "N/A",
+    birthday: "1942-01-08",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/e/eb/Stephen_Hawking.StarChild.jpg",
+  },
+  {
+    id: 32,
+    name: "Shakira",
+    phone: "+57-3001234567",
+    email: "shakira@music.com",
+    address: "Barranquilla, Colombia",
+    job: "Singer & Philanthropist",
+    anniversary: "N/A",
+    birthday: "1977-02-02",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/f/f9/Shakira_Obama.PNG",
+  },
+  {
+    id: 33,
+    name: "Emma Stone",
+    phone: "+1-3101239876",
+    email: "emma.stone@film.com",
+    address: "Scottsdale, Arizona",
+    job: "Actress",
+    anniversary: "2020-09-23",
+    birthday: "1988-11-06",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/5/5e/Emma_Stone_%286855554644%29.jpg",
+  },
+  {
+    id: 34,
+    name: "Lionel Messi",
+    phone: "+34-600123456",
+    email: "messi@football.com",
+    address: "Barcelona, Spain",
+    job: "Footballer",
+    anniversary: "2007-06-30",
+    birthday: "1987-06-24",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/c/c8/Lionel_Messi_WC2022.jpg",
+  },
+  {
+    id: 35,
+    name: "Michelle Obama",
+    phone: "+1-2025555678",
+    email: "michelle@whitehouse.gov",
+    address: "Chicago, Illinois",
+    job: "Former First Lady",
+    anniversary: "1992-10-03",
+    birthday: "1964-01-17",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/1/13/Michelle_Obama_in_2014_%28cropped%29.jpg",
+  },
 ];
 
 export default users;
