@@ -26,7 +26,7 @@ const UserDetailsScreen = ({ route, navigation }) => {
       <TopNavigation navigation={navigation} name={user.name} />
 
       <ScrollView persistentScrollbar={false}>
-        <UserImage image={user.image} />
+        <UserImage image={user.image} isBoarderShow={true} />
 
         <Text style={styles.name}>{user.name}</Text>
 

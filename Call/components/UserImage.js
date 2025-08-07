@@ -6,10 +6,10 @@ import {
   Dimensions,
 } from "react-native";
 
-const UserImage = ({ image, size = 200 }) => {
+const UserImage = ({ image, size = 200, isBoarderShow = false }) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity>
+      <TouchableOpacity style={isBoarderShow && styles.innerContainer}>
         <Image
           source={{ uri: image }}
           style={styles.image}
@@ -33,5 +33,16 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     paddingVertical: 24,
+  },
+
+  innerContainer: {
+    width: 216,
+    height: 216,
+    borderRadius: 108,
+    borderWidth: 5,
+    borderColor: "#c4c4c4ff",
+    padding: 8,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
