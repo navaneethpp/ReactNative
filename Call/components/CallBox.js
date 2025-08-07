@@ -7,6 +7,7 @@ import {
   Text,
   View,
 } from "react-native";
+import UserImage from "./UserImage";
 
 function CallBox({ name, mobileNumber, id, navigation, image }) {
   function callHandler(phone) {
@@ -29,7 +30,8 @@ function CallBox({ name, mobileNumber, id, navigation, image }) {
         navigation.navigate("UserDetail", { id: id });
       }}
     >
-      <Image source={{ uri: image }} style={styles.image} />
+      {/* <Image source={{ uri: image }} style={styles.image} /> */}
+      <UserImage image={image} size={70} />
 
       <View style={styles.subContainer}>
         <Text style={styles.text}>{name}</Text>

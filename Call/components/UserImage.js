@@ -1,11 +1,21 @@
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
-import React from "react";
+import {
+  View,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 
-const UserImage = ({ image }) => {
+const UserImage = ({ image, size = 200 }) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.innerContainer}>
-        <Image source={{ uri: image }} style={styles.image} />
+      <TouchableOpacity>
+        <Image
+          source={{ uri: image }}
+          style={styles.image}
+          width={size}
+          height={size}
+        />
       </TouchableOpacity>
     </View>
   );
@@ -13,26 +23,15 @@ const UserImage = ({ image }) => {
 
 export default UserImage;
 
+const screenHeight = Dimensions.get("screen").height;
+
 const styles = StyleSheet.create({
   image: {
-    width: 200,
-    height: 200,
     resizeMode: "cover",
-    borderRadius: 100,
+    borderRadius: screenHeight * 0.5,
   },
   container: {
-    width: "100%",
     alignItems: "center",
     paddingVertical: 24,
-  },
-  innerContainer: {
-    width: 216,
-    height: 216,
-    borderRadius: 108,
-    borderWidth: 5,
-    borderColor: "#c4c4c4ff",
-    padding: 8,
-    alignItems: "center",
-    justifyContent: "center",
   },
 });
