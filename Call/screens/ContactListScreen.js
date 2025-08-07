@@ -1,12 +1,21 @@
-import { Alert, Button, FlatList, StyleSheet, Text, View } from "react-native";
+import { Alert, FlatList, StyleSheet, View } from "react-native";
 import { useEffect } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { useIsFocused } from "@react-navigation/core";
 
 import CallBox from "../components/CallBox";
 import users from "../data/users";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function ContactListScreen({ navigation }) {
   const userData = [...users].sort((a, b) => a.name.localeCompare(b.name));
+
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    if (isFocused) {
+      Alert.alert("Information", `${users.length} contacts added`);
+    }
+  }, [isFocused]);
 
   return (
     <SafeAreaView>
