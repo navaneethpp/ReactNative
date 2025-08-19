@@ -1,10 +1,17 @@
 import { StatusBar } from "expo-status-bar";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Alert, Pressable, StyleSheet, Text, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function App() {
-  const [count, setCount] = useState("0");
+  const [count, setCount] = useState(0);
+  const [num, setNum] = useState(-1);
+
+  useEffect(() => {
+    // setInterval(() => setNum(num + 1), 500);
+    // return () => clearInterval(timer);
+    setNum(num + 1);
+  }, [count]);
 
   return (
     <View style={styles.container}>
@@ -24,6 +31,7 @@ export default function App() {
           <Ionicons name="add" size={34} color={"white"} />
         </Pressable>
       </View>
+      <Text style={{ color: "white", fontSize: 75 }}>{num}</Text>
     </View>
   );
 }

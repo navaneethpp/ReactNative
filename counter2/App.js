@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Button from "./components/Button";
 
 export default function App() {
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log("Current Count " + count);
+  }, [count]);
 
   return (
     <View style={styles.container}>
